@@ -1,0 +1,58 @@
+# Build dir
+build/
+# Local dev dir
+_inst/
+
+# Valgrind cores
+vgcore.*
+
+# Tag file
+tags
+
+# Cruft
+*~
+
+# Vim swap files
+*.swp
+*.swo
+*.swn
+
+# Object files
+*.o
+*.a
+
+# libtool cruft
+*.la
+*.lo
+m4/*.m4
+
+# Binaries
+src/main
+
+# Generated autotools artifacts
+ltmain.sh
+autom4te.cache
+libtool
+/aclocal.m4
+*.log
+configure.scan
+config.status
+config.guess
+config.sub
+Makefile
+Makefile.in
+configure
+compile
+depcomp
+missing
+test-driver
+stamp-h1
+config.h
+config.h.in
+README
+INSTALL
+install-sh
+**/.deps
+
+# Deliverables
+*.tar.gz
