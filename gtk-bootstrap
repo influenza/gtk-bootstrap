@@ -24,3 +24,40 @@
 # CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+
+declare -r thisversion='1'
+declare -r thisscript='gtk-bootstrap'
+
+DEFAULT_VERSION=0.0.1
+DEFAULT_EMAIL=missing@missing.missing
+DEFAULT_DOMAIN=missing.missing
+
+function print_usage {
+  echo "${thisscript} verson ${thisversion}"
+  echo
+  echo "Creates a templated gtk3 project using autotools as a build system."
+  echo
+  echo "Usage:"
+  echo "  ${thisscript} PROJECT_NAME PROJECT_DIRECTORY [PROJECT_EMAIL] [PROJECT_DOMAIN] [PROJECT_VERSION]"
+  echo ""
+  echo "Example: "
+  echo "  ${thisscript} spreadsheet /work/spreadsheet/ bugs@spreadsheet.org http://spreadsheet.org 1.0.0"
+}
+
+if [ $# -gt 5 -o $# -lt 2 -o "$1" = -h -o "$1" = --help ]
+then
+  print_usage
+  exit 1
+fi
+
+PROJECT_NAME=$1
+PROJECT_DIRECTORY=$2
+
+PROJECT_EMAIL=${3:-$DEFAULT_EMAIL}
+PROJECT_DOMAIN=${4:-$DEFAULT_DOMAIN}
+PROJECT_VERSION=${5:-$DEFAULT_VERSION}
+
+# Copy all the templated files over
+cp -Rv template-files $PROJECT_DIRECTORY
+# Substitute placeholders
+sed -iv "s/__PROJECT_NAME__/$PROJECT_NAME/g; s/__PROJECT_VERSION__/$PROJECT_VERSION/g; s/__PROJECT_EMAIL__/$PROJECT_EMAIL/g; s/__PROJECT_DOMAIN__/$PROJECT_DOMAIN/g" ${PROJECT_DIRECTORY}/configure.ac
