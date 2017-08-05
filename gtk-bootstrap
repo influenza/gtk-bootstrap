@@ -38,13 +38,13 @@ function print_usage {
   echo "Creates a templated gtk3 project using autotools as a build system."
   echo
   echo "Usage:"
-  echo "  ${thisscript} PROJECT_NAME PROJECT_DIRECTORY [PROJECT_EMAIL] [PROJECT_DOMAIN] [PROJECT_VERSION]"
+  echo "  ${thisscript} PROJECT_NAME PROJECT_DIRECTORY [PROJECT_VERSION] [PROJECT_EMAIL]"
   echo ""
   echo "Example: "
-  echo "  ${thisscript} spreadsheet /work/spreadsheet/ bugs@spreadsheet.org http://spreadsheet.org 1.0.0"
+  echo "  ${thisscript} spreadsheet /work/spreadsheet/ 1.0.0 bugs@spreadsheet.org"
 }
 
-if [ $# -gt 5 -o $# -lt 2 -o "$1" = -h -o "$1" = --help ]
+if [ $# -gt 4 -o $# -lt 2 -o "$1" = -h -o "$1" = --help ]
 then
   print_usage
   exit 1
@@ -53,14 +53,13 @@ fi
 PROJECT_NAME=$1
 PROJECT_DIRECTORY=$2
 
-PROJECT_EMAIL=${3:-$DEFAULT_EMAIL}
-PROJECT_DOMAIN=${4:-$DEFAULT_DOMAIN}
-PROJECT_VERSION=${5:-$DEFAULT_VERSION}
+PROJECT_VERSION=${3:-$DEFAULT_VERSION}
+PROJECT_EMAIL=${4:-$DEFAULT_EMAIL}
 
 # Copy all the templated files over
 cp -Rv template-files $PROJECT_DIRECTORY
 # Substitute placeholders
-sed -iv "s/__PROJECT_NAME__/$PROJECT_NAME/g; s/__PROJECT_VERSION__/$PROJECT_VERSION/g; s/__PROJECT_EMAIL__/$PROJECT_EMAIL/g; s/__PROJECT_DOMAIN__/$PROJECT_DOMAIN/g" ${PROJECT_DIRECTORY}/configure.ac
+sed -iv "s/__PROJECT_NAME__/$PROJECT_NAME/g; s/__PROJECT_VERSION__/$PROJECT_VERSION/g; s/__PROJECT_EMAIL__/$PROJECT_EMAIL/g;" ${PROJECT_DIRECTORY}/configure.ac
 
 echo "Running 'autoreconf -fiv && ./configure' in $PROJECT_DIRECTORY"
 pushd $PROJECT_DIRECTORY
