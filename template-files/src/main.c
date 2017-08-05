@@ -1,3 +1,6 @@
+/**
+ * Liberally copied from a GTK tutorial someplace.
+ */
 #include <gtk/gtk.h>
 
 static void

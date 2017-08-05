@@ -66,4 +66,14 @@ pushd $PROJECT_DIRECTORY
 autoreconf -fiv && ./configure
 popd
 
+echo -e '\n\n\n\n'
+echo '               ._......'
+echo '               |X/.*| |'
+echo '               |X/+ | |'
+echo '               |X/* | |'
+echo '          ____/     ; ;'
+echo '          \_____/|_/_/'
+echo '  ****************************************'
+echo "  $PROJECT_NAME has been bootstrapped!"
+echo '  ****************************************'
 echo "Your project is ready! cd $PROJECT_DIRECTORY && git init"
