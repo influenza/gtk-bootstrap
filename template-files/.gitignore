@@ -36,6 +36,7 @@ libtool
 /aclocal.m4
 *.log
 configure.scan
+configure.acv
 config.status
 config.guess
 config.sub
