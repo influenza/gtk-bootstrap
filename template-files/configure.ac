@@ -8,7 +8,7 @@ dnl references in src/Makefile.am as well!
 
 dnl Initialization
 AC_PREREQ([2.69])
-AC_INIT([__PROJECT_NAME__], [__PROJECT_VERSION__], [__PROJECT_EMAIL__],, [__PROJECT_DOMAIN__])
+AC_INIT([__PROJECT_NAME__], [__PROJECT_VERSION__], [__PROJECT_EMAIL__],, [])
 dnl AC_USE_SYSTEM_EXTENSIONS must be called prior to any macros that use the
 dnl C compile (such as AX_CHECK_COMPILE_FLAG below, or the CHECK_LIB calls)
 AC_USE_SYSTEM_EXTENSIONS
