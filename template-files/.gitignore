@@ -50,7 +50,8 @@ test-driver
 stamp-h1
 config.h
 config.h.in
-README
+README.md.in
+README.md.inv
 INSTALL
 install-sh
 **/.deps
