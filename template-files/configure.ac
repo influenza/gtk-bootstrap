@@ -16,7 +16,7 @@ AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4/])
 
-AM_INIT_AUTOMAKE([foreign no-exeext -Wno-override -Wall -Wno-extra-portability])
+AM_INIT_AUTOMAKE([foreign no-exeext -Wall -Wno-override -Wno-extra-portability])
 AM_SILENT_RULES([yes])
 dnl Libtool is a life saver if your project starts getting complex
 LT_INIT()
