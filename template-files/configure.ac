@@ -16,7 +16,7 @@ AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4/])
 
-AM_INIT_AUTOMAKE([-Wall -Wno-extra-portability foreign])
+AM_INIT_AUTOMAKE([foreign no-exeext -Wno-override -Wall -Wno-extra-portability])
 AM_SILENT_RULES([yes])
 dnl Libtool is a life saver if your project starts getting complex
 LT_INIT()
@@ -65,7 +65,7 @@ AC_CHECK_FUNCS([bzero memmove memset strerror])
 
 dnl Output
 AC_CONFIG_FILES([Makefile
-                 README
+                 README.md
                  resources/Makefile
                  src/Makefile
                  tests/Makefile])

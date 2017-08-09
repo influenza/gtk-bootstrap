@@ -62,7 +62,10 @@ cp  --no-target-directory \
     --verbose \
     template-files $PROJECT_DIRECTORY
 # Substitute placeholders
-sed -iv "s/__PROJECT_NAME__/$PROJECT_NAME/g; s/__PROJECT_VERSION__/$PROJECT_VERSION/g; s/__PROJECT_EMAIL__/$PROJECT_EMAIL/g;" ${PROJECT_DIRECTORY}/configure.ac
+for file in configure.ac README.md.in
+do
+sed -iv "s/__PROJECT_NAME__/$PROJECT_NAME/g; s/__PROJECT_VERSION__/$PROJECT_VERSION/g; s/__PROJECT_EMAIL__/$PROJECT_EMAIL/g;" ${PROJECT_DIRECTORY}/$file
+done
 
 echo "Running 'autoreconf -fiv && ./configure' in $PROJECT_DIRECTORY"
 pushd $PROJECT_DIRECTORY
