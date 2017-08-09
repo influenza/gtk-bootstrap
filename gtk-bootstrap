@@ -57,7 +57,10 @@ PROJECT_VERSION=${3:-$DEFAULT_VERSION}
 PROJECT_EMAIL=${4:-$DEFAULT_EMAIL}
 
 # Copy all the templated files over
-cp -Rv template-files $PROJECT_DIRECTORY
+cp  --no-target-directory \
+    --recursive \
+    --verbose \
+    template-files $PROJECT_DIRECTORY
 # Substitute placeholders
 sed -iv "s/__PROJECT_NAME__/$PROJECT_NAME/g; s/__PROJECT_VERSION__/$PROJECT_VERSION/g; s/__PROJECT_EMAIL__/$PROJECT_EMAIL/g;" ${PROJECT_DIRECTORY}/configure.ac
 
